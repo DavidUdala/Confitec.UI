@@ -1,3 +1,4 @@
+import { User } from 'src/app/interface/user';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -7,19 +8,37 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent {
-  addressForm = this.fb.group({
-    company: null,
-    firstName: [null, Validators.required],
-    lastName: [null, Validators.required],
-    address: [null, Validators.required],
-    address2: null,
-    city: [null, Validators.required],
-    state: [null, Validators.required],
-    postalCode: [null, Validators.compose([
-      Validators.required, Validators.minLength(5), Validators.maxLength(5)])
-    ],
-    shipping: ['free', Validators.required]
-  });
+user: User = {
+ name: '',
+ lastName: '',
+ email: '',
+ education: 0,
+ birthDate: ''
+}
+  userForm = this.fb.group(
+    {
+      name: [null, Validators.required],
+      lastName: [null, Validators.required],
+      birthDate: [null, Validators.required],
+      email: [
+        null, Validators.compose([
+          Validators.required, Validators.email
+        ]),
+      ],
+    });
+  // userForm = this.fb.group({
+  //   company: null,
+  //   firstName: [null, Validators.required],
+  //   lastName: [null, Validators.required],
+  //   address: [null, Validators.required],
+  //   address2: null,
+  //   city: [null, Validators.required],
+  //   state: [null, Validators.required],
+  //   postalCode: [null, Validators.compose([
+  //     Validators.required, Validators.minLength(5), Validators.maxLength(5)])
+  //   ],
+  //   shipping: ['free', Validators.required]
+  // });
 
   hasUnitNumber = false;
 

@@ -25,3 +25,9 @@
 .col:last-child {
   margin-right: 0;
 }
+
+.radio-button{
+  display:flex ;
+  justify-content: start;
+  column-gap: 1rem;
+}
