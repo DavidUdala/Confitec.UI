@@ -1,0 +1,10 @@
+{
+  "/posts": {
+    "target": "https://localhost:7232/",
+    "secure": true,
+    "pathRewrite": {
+    "^/posts": ""
+  },
+    "changeOrigin": true
+  }
+}
