@@ -2,6 +2,7 @@ import { User } from 'src/app/interface/user';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -34,11 +35,12 @@ export class RegistrationComponent {
 
   hasUnitNumber = false;
 
-  constructor(private fb: FormBuilder, private service: UserService) {}
+  constructor(private fb: FormBuilder, private service: UserService, private router : Router) {}
 
   onSubmit(): void {
     this.service.create(this.user).subscribe((response) => {
       console.log(response);
+      // this.router.navigate(['/search']);
     })
   }
 }

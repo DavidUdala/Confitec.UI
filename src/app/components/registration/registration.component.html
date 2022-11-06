@@ -37,7 +37,11 @@
               placeholder="Data de Nascimento"
               formControlName="birthDate"
               [(ngModel)]="user.birthDate"
+              [matDatepicker]="picker"
             />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
             <mat-error
               *ngIf="userForm.controls['birthDate'].hasError('required')"
             >
