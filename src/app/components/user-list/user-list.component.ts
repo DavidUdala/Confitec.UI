@@ -18,7 +18,7 @@ export class UserListComponent implements AfterViewInit {
   dataSource: UserListDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['Id', 'Nome', 'Sobrenome', 'Email', 'Data Nascimento', 'Escolaridade'];
+  displayedColumns = ['Id', 'Nome', 'Sobrenome', 'Email', 'Data Nascimento', 'Escolaridade', 'Editar', 'Apagar', ];
   // 'Sobrenome', 'Data de Nascimento', 'Educacão'
 
   users: User[] = [];

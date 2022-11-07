@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import Swal  from 'sweetalert2'
 
 @Component({
   selector: 'app-registration',
@@ -39,8 +40,14 @@ export class RegistrationComponent {
 
   onSubmit(): void {
     this.service.create(this.user).subscribe((response) => {
-      console.log(response);
-      // this.router.navigate(['/search']);
+      Swal.fire({
+        title: `Usuário ${response.name} criado com sucesso!`,
+        confirmButtonText: 'OK',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['/search']);
+        }
+      })
     })
   }
 }

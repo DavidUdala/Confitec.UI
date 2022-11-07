@@ -53,11 +53,11 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSortModule,
     HttpClientModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
   providers: [
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
   bootstrap: [AppComponent]
 })
