@@ -1,3 +1,4 @@
+import { UserListDto } from './../interface/userListDto';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { User } from '../interface/user';
@@ -12,8 +13,8 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.API}/getAll`);
+  getAll(): Observable<UserListDto[]> {
+    return this.http.get<UserListDto[]>(`${this.API}/getAll`);
   }
 
   getById(id : number) : Observable<User>{

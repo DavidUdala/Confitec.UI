@@ -1,3 +1,4 @@
+import { UserListDto } from './../../interface/userListDto';
 import { Router } from '@angular/router';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -16,14 +17,14 @@ import Swal  from 'sweetalert2'
 export class UserListComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<User>;
+  @ViewChild(MatTable) table!: MatTable<UserListDto>;
   dataSource: UserListDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['Id', 'Nome', 'Sobrenome', 'Email', 'Data Nascimento', 'Escolaridade', 'Editar', 'Apagar', ];
   // 'Sobrenome', 'Data de Nascimento', 'Educacão'
 
-  users: User[] = [];
+  users: UserListDto[] = [];
 
   constructor(private service : UserService, private router: Router) {
     this.dataSource = new UserListDataSource();

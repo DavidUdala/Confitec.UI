@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { User } from 'src/app/interface/user';
+import { UserListDto } from 'src/app/interface/userListDto';
 
 
 
@@ -12,8 +12,8 @@ import { User } from 'src/app/interface/user';
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class UserListDataSource extends DataSource<User> {
-  data: User[] = [];
+export class UserListDataSource extends DataSource<UserListDto> {
+  data: UserListDto[] = [];
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
@@ -26,7 +26,7 @@ export class UserListDataSource extends DataSource<User> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<User[]> {
+  connect(): Observable<UserListDto[]> {
     if (this.paginator && this.sort) {
       debugger;
       // Combine everything that affects the rendered data into one update
@@ -50,7 +50,7 @@ export class UserListDataSource extends DataSource<User> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: User[]): User[] {
+  private getPagedData(data: UserListDto[]): UserListDto[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -63,7 +63,7 @@ export class UserListDataSource extends DataSource<User> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: User[]): User[] {
+  private getSortedData(data: UserListDto[]): UserListDto[] {
     debugger;
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
@@ -72,7 +72,7 @@ export class UserListDataSource extends DataSource<User> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'Escolaridade': return compare(+a.education, +b.education, isAsc);
+        case 'Id': return compare(+a.id, +b.id, isAsc);
 
         // case 'id': return compare(+a.name, +b.name, isAsc);
         default: return 0;
