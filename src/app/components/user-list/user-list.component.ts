@@ -48,7 +48,7 @@ export class UserListComponent implements AfterViewInit {
           icon:'success',
         }).then((result) => {
           if (result.isConfirmed) {
-            this.router.navigate(['/search']);
+            window.location.reload();
           }
         })
       });
