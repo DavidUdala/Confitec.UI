@@ -41,8 +41,9 @@ export class RegistrationComponent {
   onSubmit(): void {
     this.service.create(this.user).subscribe((response) => {
       Swal.fire({
-        title: `Usuário ${response.name} criado com sucesso!`,
+        title: `Usuário ${response.name} foi criado com sucesso!`,
         confirmButtonText: 'OK',
+        icon:'success'
       }).then((result) => {
         if (result.isConfirmed) {
           this.router.navigate(['/search']);

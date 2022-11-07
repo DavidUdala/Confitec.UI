@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -5,6 +6,7 @@ import { MatTable } from '@angular/material/table';
 import { User } from 'src/app/interface/user';
 import { UserService } from 'src/app/services/user.service';
 import { UserListDataSource } from './user-list-datasource';
+import Swal  from 'sweetalert2'
 
 @Component({
   selector: 'app-user-list',
@@ -23,7 +25,7 @@ export class UserListComponent implements AfterViewInit {
 
   users: User[] = [];
 
-  constructor(private service : UserService) {
+  constructor(private service : UserService, private router: Router) {
     this.dataSource = new UserListDataSource();
 
   }
@@ -35,5 +37,23 @@ export class UserListComponent implements AfterViewInit {
     this.service.getAll().subscribe((response) => {
       this.table.dataSource = response;
     })
+  }
+
+  Remove(id : any){
+      this.service.delete(id).subscribe((response) =>{
+        Swal.fire({
+          title: `Usuário ${response.name} foi excluído com sucesso!`,
+          confirmButtonText: 'OK',
+          icon:'success',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.router.navigate(['/search']);
+          }
+        })
+      });
+  }
+
+  Editar(id : any){
+     this.router.navigate([`/edit/${id}`]);
   }
 }

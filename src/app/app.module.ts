@@ -25,12 +25,14 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDatepickerModule, } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { EditUserComponent } from './components/edituser/edituser.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     RegistrationComponent,
     UserListComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,

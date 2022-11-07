@@ -1,7 +1,7 @@
 <form [formGroup]="userForm" novalidate (ngSubmit)="onSubmit()">
   <mat-card class="shipping-card">
     <mat-card-header>
-      <mat-card-title>Cadastro de Usuário</mat-card-title>
+      <mat-card-title>Editar Usuário</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <div class="row">
@@ -39,7 +39,7 @@
               [(ngModel)]="user.birthDate"
               [matDatepicker]="picker"
             />
-            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             <mat-error
@@ -76,7 +76,7 @@
       </div>
     </mat-card-content>
     <mat-card-actions >
-      <button mat-raised-button color="primary" [disabled]="!userForm.valid" type="submit">Salvar</button>
+      <button mat-raised-button color="primary" [disabled]="!userForm.valid" type="submit">Atualizar</button>
       <button mat-raised-button color="primary" routerLink="/search" >Voltar</button>
     </mat-card-actions>
   </mat-card>
